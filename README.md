@@ -63,11 +63,12 @@ Do the above for many steps, and your model should improve.
 ## Citation
 
 ```bibtex
-@article{Devlin_2019, url={http://dx.doi.org/10.18653/v1/N19-1423},
-   DOI={10.18653/v1/n19-1423},
-   journal={Proceedings of the 2019 Conference of the North},
-   publisher={Association for Computational Linguistics},
-   author={Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
-   year={2019}
+@misc{devlin2018bert,
+    title={BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding},
+    author={Jacob Devlin and Ming-Wei Chang and Kenton Lee and Kristina Toutanova},
+    year={2018},
+    eprint={1810.04805},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL}
 }
 ```
