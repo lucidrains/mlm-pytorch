@@ -38,7 +38,7 @@ class MLM(nn.Module):
         self,
         transformer,
         mask_prob = 0.15,
-        replace_prob = 0.85,
+        replace_prob = 0.9,
         num_tokens = None,
         random_token_prob = 0.,
         mask_token_id = 2,
