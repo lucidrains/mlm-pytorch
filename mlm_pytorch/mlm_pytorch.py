@@ -60,7 +60,7 @@ class MLM(nn.Module):
         self.mask_token_id = mask_token_id
         self.mask_ignore_token_ids = set([*mask_ignore_token_ids, pad_token_id])
 
-    def forward(self, input):
+    def forward(self, input, **kwargs):
         # do not mask [pad] tokens, or any other tokens in the tokens designated to be excluded ([cls], [sep])
         # also do not include these special tokens in the tokens chosen at random
         no_mask = mask_with_tokens(input, self.mask_ignore_token_ids)
@@ -90,7 +90,7 @@ class MLM(nn.Module):
         labels = input.masked_fill(~mask, self.pad_token_id)
 
         # get generator output and get mlm loss
-        logits = self.transformer(masked_input)
+        logits = self.transformer(masked_input, **kwargs)
 
         mlm_loss = F.cross_entropy(
             logits.transpose(1, 2),
