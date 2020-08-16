@@ -16,7 +16,7 @@ First `pip install reformer-pytorch`, then run the following example to see what
 import torch
 from torch import nn
 from torch.optim import Adam
-from mlm_pytorch.mlm_pytorch import MLM
+from mlm_pytorch import MLM
 
 # instantiate the language model
 
