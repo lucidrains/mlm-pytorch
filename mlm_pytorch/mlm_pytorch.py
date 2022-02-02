@@ -88,7 +88,7 @@ class MLM(nn.Module):
             random_token_prob &= ~random_no_mask
             masked_seq = torch.where(random_token_prob, random_tokens, masked_seq)
 
-            # remove tokens that were substituted by random to be [mask]ed later
+            # remove tokens that were substituted randomly from being [mask]ed later
             mask = mask & ~random_token_prob
 
         # [mask] input
