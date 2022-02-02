@@ -10,7 +10,7 @@ $ pip install mlm-pytorch
 
 ## Usage
 
-First `pip install reformer-pytorch`, then run the following example to see what one iteration of the unsupervised training is like
+First `pip install x-transformer`, then run the following example to see what one iteration of the unsupervised training is like
 
 ```python
 import torch
@@ -20,13 +20,16 @@ from mlm_pytorch import MLM
 
 # instantiate the language model
 
-from reformer_pytorch import ReformerLM
+from x_transformers import TransformerWrapper, Encoder
 
-transformer = ReformerLM(
+transformer = TransformerWrapper(
     num_tokens = 20000,
-    dim = 512,
-    depth = 1,
-    max_seq_len = 1024
+    max_seq_len = 1024,
+    attn_layers = Encoder(
+        dim = 512,
+        depth = 6,
+        heads = 8
+    )
 )
 
 # plugin the language model into the MLM trainer
@@ -46,7 +49,7 @@ opt = Adam(trainer.parameters(), lr=3e-4)
 
 # one training step (do this for many steps in a for loop, getting new `data` each time)
 
-data = torch.randint(0, 20000, (10, 1024)).cuda()
+data = torch.randint(0, 20000, (8, 1024)).cuda()
 
 loss = trainer(data)
 loss.backward()
@@ -64,11 +67,11 @@ Do the above for many steps, and your model should improve.
 
 ```bibtex
 @misc{devlin2018bert,
-    title={BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding},
-    author={Jacob Devlin and Ming-Wei Chang and Kenton Lee and Kristina Toutanova},
-    year={2018},
-    eprint={1810.04805},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL}
+    title   = {BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding},
+    author  = {Jacob Devlin and Ming-Wei Chang and Kenton Lee and Kristina Toutanova},
+    year    = {2018},
+    eprint  = {1810.04805},
+    archivePrefix = {arXiv},
+    primaryClass = {cs.CL}
 }
 ```

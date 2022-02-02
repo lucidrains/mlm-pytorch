@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
   name = 'mlm-pytorch',
   packages = find_packages(),
-  version = '0.0.5',
+  version = '0.1.0',
   license='MIT',
   description = 'MLM (Masked Language Modeling) - Pytorch',
   author = 'Phil Wang',
