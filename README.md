@@ -10,7 +10,7 @@ $ pip install mlm-pytorch
 
 ## Usage
 
-First `pip install x-transformer`, then run the following example to see what one iteration of the unsupervised training is like
+First `pip install x-transformers`, then run the following example to see what one iteration of the unsupervised training is like
 
 ```python
 import torch
